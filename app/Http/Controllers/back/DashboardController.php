@@ -18,9 +18,9 @@ class DashboardController extends Controller
     {
 
 
-        $historyorders = DB::select("select YEAR(tanggalorder) as date, MONTH(tanggalorder) as month,sum(itemsubtotal) as jumlah
-				from order_models where deleted = 'false' 
-			 group by YEAR(tanggalorder), MONTH(tanggalorder) order by tanggalorder asc");
+        $historyorders = DB::select("select YEAR(tanggal_peminjaman) as date, MONTH(tanggal_peminjaman) as month,count(id_buku) as jumlah
+				from peminjaman where deleted = 'false' 
+			 group by YEAR(tanggal_peminjaman), MONTH(tanggal_peminjaman) order by tanggal_peminjaman asc");
     //  /dd($historyorders);
 
         $label = [2011,2012,2013,2014,2015,2016,2017];
