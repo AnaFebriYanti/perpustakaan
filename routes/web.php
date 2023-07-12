@@ -93,3 +93,5 @@ Route::group(['middleware' => ['auth']], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/fbuku', [App\Http\Controllers\front\FrontBukuController::class, 'index'])->name('fbuku');
+Route::get('/fkategoribuku', [App\Http\Controllers\front\FrontKategoriBukuController::class, 'index'])->name('fkategoribuku');

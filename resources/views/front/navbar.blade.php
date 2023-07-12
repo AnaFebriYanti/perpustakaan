@@ -27,9 +27,21 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{url('home')}}" class="nav-item nav-link active">Home</a>
                         <a href="{{url('fbuku')}}" class="nav-item nav-link">Buku</a>
-                        <a href="{{url('fproducts')}}" class="nav-item nav-link">Kategori Buku</a>
+                        <a href="{{url('fkategoribuku')}}" class="nav-item nav-link">Kategori Buku</a>
                         <a href="{{url('fcontacts')}}" class="nav-item nav-link">Contact</a>
                     </div>
+                </div>
+                <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                    <a href="" class="btn px-0">
+                        <i class="fas fa-heart text-primary"></i>
+                        <span class="badge text-secondary border border-secondary rounded-circle"
+                            style="padding-bottom: 2px;">0</span>
+                    </a>
+                    <a href="" class="btn px-0 ml-3">
+                        <i class="fas fa-shopping-cart text-primary"></i>
+                        <span class="badge text-secondary border border-secondary rounded-circle"
+                            style="padding-bottom: 2px;">0</span>
+                    </a>
                 </div>
             </nav>
         </div>
