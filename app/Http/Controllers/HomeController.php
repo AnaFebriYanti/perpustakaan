@@ -32,4 +32,23 @@ class HomeController extends Controller
         return view('home',compact('title', 'pages', 'res_kategori_buku','res_buku'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
+    public function addtocart(Request $request){
+
+        $id = $request->id;
+        $res_buku = DB::select('select * from buku');
+
+        \Cart::add(
+            [
+            'id' => $request->id, // inique row ID
+            'judul_buku' => $res_buku->judul_buku,
+            'quantity' => 1
+            ]
+        ); 
+        $cartItems = \Cart::getContent();
+        return redirect()
+                ->route('home')
+                ->with([
+                    'success' => 'New post has been created successfully'
+                ]);
+    }
 }

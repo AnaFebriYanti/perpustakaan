@@ -49,7 +49,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                            
-                            <a class='btn btn-primary' href="{{url('addtocart'.'?id='.$item->id)}}">add to cart</a>
+                            <a class='btn btn-primary' href="{{url('addtocart'.$item->id)}}">add to cart</a>
                         </div>
                     </div>
                 </div>
