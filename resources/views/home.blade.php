@@ -4,7 +4,7 @@
 <div class="container-fluid pt-5">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
         class="bg-secondary pr-3">Kategori Buku</span></h2>
-    @foreach ($res_kategori_buku as $item)   
+    @foreach ($kategori_buku as $item)   
     <div class="row px-xl-5 pb-3">
         <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
             <a class="text-decoration-none" href="">
@@ -26,7 +26,7 @@
 <div class="container-fluid pt-5 pb-3">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Buku</span></h2>
     <div class="row px-xl-5">
-        @foreach ($res_buku as $item)
+        @foreach ($buku as $item)
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
@@ -48,8 +48,14 @@
                             <h5>{{$item->tahun_terbit}}</h5>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
-                           
-                            <a class='btn btn-primary' href="{{url('addtocart'.$item->id)}}">add to cart</a>
+                            <form method="POST" action="{{ route('add_cart') }}" enctype="multipart/form-data">
+                                @csrf
+                                <input name="id" value="{{ $item->id }}" hidden>
+                                <input name="name" value="{{ $item->judul_buku }}" hidden>
+                                <input name="price" value="{{ $item->harga_sewa }}" hidden>
+                                <input name="image" value="{{ $item->image }}" hidden> 
+                                <button class="btn btn-primary">Add To Cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>

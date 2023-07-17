@@ -95,3 +95,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/fbuku', [App\Http\Controllers\front\FrontBukuController::class, 'index'])->name('fbuku');
 Route::get('/fkategoribuku', [App\Http\Controllers\front\FrontKategoriBukuController::class, 'index'])->name('fkategoribuku');
+
+Route::get('/products', [ProductContoller::class, 'product_list'])->name('products');
+Route::post('/products/cart/add', [App\Http\Controllers\CartController::class, 'add_cart'])->name('add_cart');
+Route::get('/products/cart/view', [App\Http\Controllers\CartController::class, 'view_cart'])->name('view_cart');
+Route::post('/products/cart/update', [App\Http\Controllers\CartController::class, 'update_cart'])->name('update-cart');
+Route::get('/products/cart/{id}/remove', [App\Http\Controllers\CartController::class, 'remove_item'])->name('remove-item');
+Route::get('/products/cart/clear', [App\Http\Controllers\CartController::class, 'clear_item'])->name('clear-item');

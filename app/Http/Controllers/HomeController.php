@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Buku;
+use App\Models\Kategori_buku; 
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -26,29 +28,11 @@ class HomeController extends Controller
     {
         $title = 'home';
         $pages = 'home';
+        $cartItems = \Cart::getContent(); 
 
-        $res_kategori_buku = DB::select('select * from kategori_buku');
-        $res_buku = DB::select('select * from buku');
-        return view('home',compact('title', 'pages', 'res_kategori_buku','res_buku'))
+        $buku = Buku::all();
+        $kategori_buku = Kategori_buku::all();
+        return view('home',compact('title', 'pages', 'kategori_buku','buku','cartItems'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
-    public function addtocart(Request $request){
-
-        $id = $request->id;
-        $res_buku = DB::select('select * from buku');
-
-        \Cart::add(
-            [
-            'id' => $request->id, // inique row ID
-            'judul_buku' => $res_buku->judul_buku,
-            'quantity' => 1
-            ]
-        ); 
-        $cartItems = \Cart::getContent();
-        return redirect()
-                ->route('home')
-                ->with([
-                    'success' => 'New post has been created successfully'
-                ]);
     }
 }
